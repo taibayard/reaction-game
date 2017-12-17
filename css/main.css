@@ -71,6 +71,7 @@ main{
 	text-align:center;
 	width:100%;
 	display: none;
+	font-family: 'Dosis', sans-serif;
 }
 #stop-light{
     height: 38em;
@@ -88,5 +89,14 @@ main{
 	background-color: black;
 	margin-top: 1em;
 	display: inline-block;
+}
+#input-display{
+	height:100%;
+	width:100%;
+	margin-top: 6em;
+}
+#input-display a{
+	font-size: 23em;
+	font-weight: bold;
 }
 /*end main content*/	
