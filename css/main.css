@@ -6,6 +6,7 @@ html,body{
 	height:100%;
 	font-family: 'Dosis', sans-serif;
 	text-align: center;
+	/*display: none; remove this when ready to start testing*/
 }
 .title{
 	font-size: 15em;
@@ -63,3 +64,29 @@ html,body{
     	text-shadow: -9px 7px 10px rgb(60, 4, 0);
     }
 }
+
+/*end homescreen stuff*/
+/*start main content*/
+main{
+	text-align:center;
+	width:100%;
+	display: none;
+}
+#stop-light{
+    height: 38em;
+    width: 300px;
+    background-color: grey;
+    position:relative;
+    display: inline-block;
+    margin-top: 1em;
+    text-align: center;
+}
+.light{
+	width: 11em;
+	height: 11em;
+	border-radius: 15em;
+	background-color: black;
+	margin-top: 1em;
+	display: inline-block;
+}
+/*end main content*/	
