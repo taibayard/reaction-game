@@ -98,5 +98,41 @@ main{
 #input-display a{
 	font-size: 23em;
 	font-weight: bold;
+	color: #cc7e7e;
+}
+#final-time-wrapper{
+	display: none;
+	width: 50%;
+	height: 20em;
+	background-color: #bba4a4b8;
+	position: relative;
+	left: 23em;
+	top: 10em;
+	border-radius: 13px;
+	box-shadow: 0px 0px 17px 3px #a0a0a0;
+}
+#final-time:before{
+	content:"Your reaction time was : ";
+}
+#final-time:after{
+	content:"s";
+}
+#final-time{
+	position: relative;
+	top: 2em;
+	font-size: 3em;
+	font-weight: bold;
+	color: #9e1515;
+	text-shadow: -1px 1px 1px #631010;
+}
+#play-again-btn{
+	position: absolute;
+	bottom: 1em;
+	width: 100%;
+	color: #27ffee;
+	font-weight: bolder;
+	font-size: 1.75em;
+	cursor:pointer;
+	text-shadow: -1px 1px 1px #4a4343;
 }
 /*end main content*/	

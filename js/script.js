@@ -1,16 +1,33 @@
+let inputArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 let homeScreen = document.getElementById("home-screen");
 let playBtn = document.getElementById("play-btn");
 let homeLabel = document.getElementsByClassName("title")[0];
 let stopLight = document.getElementById("stop-light");
 let lights = document.getElementsByClassName("light");
 let main = document.getElementsByTagName("main")[0];
+let inputDisplay = document.getElementById("input-display");
 let inputDisplayText = document.getElementById("input-display").getElementsByTagName("a")[0];
+let finalTimeWrapper = document.getElementById("final-time-wrapper");
+let playAgainBtn = document.getElementById("play-again-btn");
+let timeLabel = document.getElementById("final-time");
 let currentLight = 0;
 let clearLights = false;
-let inputArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 let currentKey = null;
 let currentTime = null;
 let userInputEnabled = false;
+let timeElapsed = null;
+function variableReset(){
+    userInputEnabled = false
+    currentTime = null;
+    currentKey = null;
+    timeElapsed = null;
+    clearLights = false;
+    currentLight = 0;
+    for(let i =0;i<lights.length;i++){
+        lights[i].style.backgroundColor = "black";
+    }
+    stopLight.style.display = "inline-block";
+}
 var randomTime = function(min, max) {
     return ((Math.random() * max) + min) * 1000;
 }
@@ -18,18 +35,17 @@ var random = function(min, max) {
     return Math.floor((Math.random() * max) + min)
 }
 function correctKey(){
-    alert("key matched");
+    timeElapsed = (Date.now()-currentTime)/ 1000;
+    userInputEnabled = false;
+    inputDisplay.style.display = "none";
+    finalTimeWrapper.style.display = "block";
+    timeLabel.innerText = timeElapsed;
 }
 function displayKey() {
     currentKey = inputArr[random(0,inputArr.length-1)];
-    console.log(currentKey);
+    inputDisplay.style.display ="block";
     inputDisplayText.innerText = currentKey;
-    console.log(userInputEnabled);
-}
-function displayTimer(){
-    setTimeout(function(){
-        currentTime += 0.01
-    },10)
+    currentTime = Date.now();
 }
 function changeLights() {
     let timer;
@@ -58,7 +74,6 @@ function changeLights() {
                 stopLight.style.display = "none";
                 userInputEnabled = true;
                 displayKey();
-                displayTimer();
                 break;
         }
         currentLight++;
@@ -67,16 +82,18 @@ function changeLights() {
 }
 
 function playBtnClick() {
-    userInputEnabled = false
-    currentTime = null;
-    currentKey = null;
+    variableReset();
     homeScreen.style.setProperty("display", "none");
     main.style.setProperty("display", "block");
     changeLights();
 }
-
+function playAgainBtnClick(){
+    finalTimeWrapper.style.display = "none";
+    playBtnClick();
+}
 function addListeners() {
     playBtn.addEventListener("click", playBtnClick);
+    playAgainBtn.addEventListener("click",playAgainBtnClick);
 }
 window.onload = function() {
     addListeners();
